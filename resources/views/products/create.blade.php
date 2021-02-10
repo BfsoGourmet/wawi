@@ -21,6 +21,18 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
+                <label for="price">{{__('Kalorien')}}:</label>
+                <input class="form-control" type="text" name="kalorien" id="kalorien" value="{{ old('kalorien') }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="price">{{__('Zucker')}}:</label>
+                <input class="form-control" type="text" name="zucker" id="zucker" value="{{ old('zucker') }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
                 <label for="categories">{{__('Kurier')}}:</label>
                 <select class="form-control" name="kurier" id="kurier">
 
