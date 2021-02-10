@@ -11,6 +11,6 @@
         <div class="form-group">
             <input type="text" name="name" value="{{$category->name}}">
         </div>
-        <input type="submit" value="{{__('form.save')}}">
+            <input type="submit" value="{{__('form.save')}}">
     </form>
 @stop

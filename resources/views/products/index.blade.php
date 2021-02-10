@@ -3,7 +3,7 @@
 @section('content')
     @include('partials.messages')
 
-    <h1>{{__('product.products')}}</h1>
+    <h1>{{__('product.products')}} Test</h1>
 
     {{ $products->links() }}
 

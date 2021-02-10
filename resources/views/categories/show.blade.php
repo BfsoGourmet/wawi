@@ -22,7 +22,7 @@
 
     <div class="form-group">
         <a href="{{route('categories.edit',['category'=>$category])}}">
-            <button class="btn btn-light">{{__('form.edit')}}</button>
+            <button class="btn btn-light"><i class="material-icons">create</i>{{__('form.edit')}}</button>
         </a>
     </div>
 
@@ -31,7 +31,7 @@
         {{ method_field('DELETE') }}
 
         <div class="form-group">
-            <input type="submit" class="btn btn-light" value="{{__('form.destroy')}}">
+            <input type="submit" class="btn btn-light" value="{{__('form.destroy')}}"><i class="material-icons">block</i>
         </div>
     </form>
 @stop
