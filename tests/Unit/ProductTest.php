@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\products;
 
+use Database\Factories\ProductFactory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,6 @@ class ProductsTest extends TestCase {
     use CreatesApplication;
     use WithFaker;
     use RefreshDatabase;
-    use DatabaseMigrations;
 
     protected $app;
 
@@ -30,12 +30,7 @@ class ProductsTest extends TestCase {
      * @test
      */
     public function save_product_to_db() {
-        $newProduct = new Product();
-        $newProduct->title = $this->faker->word;
-        $newProduct->sku = Str::slug($this->faker->word);
-        $newProduct->price = $this->faker->randomFloat(2, 10, 100);
-        $newProduct->save();
-
+        $newProduct = Product::factory(1)->create()->first();
         $storedProduct = Product::where('id', $newProduct->id)->first();
         $this->assertEquals($newProduct->title, $storedProduct->title);
         $this->assertEquals($newProduct->price, $storedProduct->price);
