@@ -13,7 +13,7 @@ class CreateWawiTables extends Migration
      */
     public function up()
     {
-        Schema::table('user', function ($table) {
+        Schema::create('users', function ($table) {
             $table->id('user_id');
             $table->string('name');
             $table->string('username')->unique();
@@ -22,22 +22,21 @@ class CreateWawiTables extends Migration
             $table->timestamps();
         });
 
-        Schema::table('product', function ($table) {
-            $table->id('product_id');
+        Schema::create('products', function ($table) {
+            $table->id('id');
             $table->string('sku');
-            $table->bool('is_live');
+//            $table->integer('is_live');
             $table->string('title');
-            $table->text('short_desc');
-            $table->text('long_desc');
-            $table->integer('courir_id');
-            $table->integer('stock_count');
+            //$table->text('short_desc');
+            //$table->text('long_desc');
+            //$table->integer('courir_id');
+            //$table->integer('stock_count');
             $table->float('price');
-            $table->datetime('created_at');
-            $table->datetime('updated_at');
-            $table->string('calories');
-            $table->string('sugar');
-            $table->string('declaration');
-            $table->integer('producer_id');
+            $table->timestamps();
+            //$table->string('calories');
+            //$table->string('sugar');
+            //$table->string('declaration');
+            //$table->integer('producer_id');
         });
     }
 
