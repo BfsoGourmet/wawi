@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\products;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -14,6 +15,7 @@ class ProductsTest extends TestCase {
     use CreatesApplication;
     use WithFaker;
     use RefreshDatabase;
+    use DatabaseMigrations;
 
     protected $app;
 
