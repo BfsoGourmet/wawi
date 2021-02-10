@@ -8,10 +8,12 @@ use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use App\Models\Product;
 use Tests\CreatesApplication;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProductsTest extends TestCase {
     use CreatesApplication;
     use WithFaker;
+    use RefreshDatabase;
 
     protected $app;
 
