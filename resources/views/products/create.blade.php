@@ -23,6 +23,6 @@
                 @endforeach
             </select>
         </div>
-        <input type="submit" id="submit" class="btn btn-primary">
+        <input type="submit" id="submit" class="btn btn-primary"><i class="material-icons">save</i>
     </form>
 @stop

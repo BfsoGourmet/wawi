@@ -27,6 +27,6 @@
                 @endforeach
             </select>
         </div>
-        <input type="submit" value="{{__('form.save')}}">
+        <input type="submit" value="{{__('form.save')}}"><i class="material-icons">save</i>
     </form>
 @stop

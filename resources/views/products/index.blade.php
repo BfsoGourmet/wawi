@@ -41,7 +41,7 @@
                 </td>
                 <td>
                     <a href="{{route('products.edit',['product'=>$product])}}">
-                        <button class="btn btn-light">{{__('form.edit')}}</button>
+                        <button class="btn btn-light"><i class="material-icons">create</i>{{__('form.edit')}}</button>
                     </a>
                 </td>
                 <td>
@@ -49,7 +49,7 @@
                         @csrf
                         {{ method_field('DELETE') }}
                         <div class="form-group">
-                            <input type="submit" class="btn btn-light" value="{{__('form.destroy')}}">
+                            <input type="submit" class="btn btn-light" value="{{__('form.destroy')}}"><i class="material-icons">block</i>
                         </div>
                     </form>
                 </td>
@@ -59,6 +59,6 @@
     </table>
 
     <a href="{{route('products.create')}}" id="create-product-link">
-        <button class="btn btn-success">{{__('form.create')}}</button>
+        <button class="btn btn-success"><i class="material-icons">add</i>{{__('form.create')}}</button>
     </a>
 @stop
