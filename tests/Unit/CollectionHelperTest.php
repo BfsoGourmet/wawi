@@ -5,25 +5,14 @@ namespace Tests\Unit;
 use App\Wawi\CollectionHelper;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Foundation\Testing\WithFaker;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use App\Models\Product;
-use Tests\CreatesApplication;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CollectionHelperTest extends TestCase
 {
-    use CreatesApplication;
-    use WithFaker;
     use RefreshDatabase;
-
-    protected $app;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->app = $this->createApplication();
-        $this->setUpFaker();
-    }
+    use WithFaker;
 
     /**
      * @test
@@ -101,10 +90,5 @@ class CollectionHelperTest extends TestCase
             $titles,
             CollectionHelper::findAllProductTitles($newProducts)->all()
         );
-    }
-
-    public function tearDown(): void
-    {
-        parent::tearDown();
     }
 }
