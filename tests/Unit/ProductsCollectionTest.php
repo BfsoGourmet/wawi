@@ -2,14 +2,14 @@
 
 namespace Tests\Unit;
 
-use App\Wawi\CollectionHelper;
+use App\Wawi\ProductsCollection;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CollectionHelperTest extends TestCase
+class ProductsCollectionTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
@@ -19,17 +19,18 @@ class CollectionHelperTest extends TestCase
      */
     public function get_all_products_with_a_price_larger_than_x()
     {
-        $newProducts = Product::factory(4)
+        $products = new ProductsCollection(Product::factory(4)
             ->state(new Sequence(
                 ['price' => 85],
                 ['price' => 88],
                 ['price' => 20],
                 ['price' => 89],
             ))
-            ->create();
+            ->create()
+        );
         $this->assertCount(
             3,
-            CollectionHelper::productsWithPriceLargerThan($newProducts,80)
+            $products->priceLagerThan(80)
         );
     }
 
@@ -55,13 +56,13 @@ class CollectionHelperTest extends TestCase
         ]);
         $sequences->each(function ($sequence){
             // Use the product factory to create one or multiple products
-            $newProducts = Product::factory(count($sequence))
+            $products = new ProductsCollection(Product::factory(count($sequence))
                 ->state($sequence['sequence'])
-                ->create();
+                ->create());
             // Use that product to assert the total
             $this->assertEquals(
                 $sequence['total'],
-                CollectionHelper::findTotalProductsPriceInCard($newProducts)
+                $products->totalPrice()
             );
         });
     }
@@ -77,18 +78,18 @@ class CollectionHelperTest extends TestCase
             $this->faker->word,
         ];
         // Use the titles above in a new sequence to create 3 products
-        $newProducts = Product::factory(3)
+        $products = new ProductsCollection(Product::factory(3)
             ->state(new Sequence(
                 ['title' => $titles[0]],
                 ['title' => $titles[1]],
                 ['title' => $titles[2]],
             ))
-            ->create();
+            ->create());
 
         // Assert if the $titles are the same as
         $this->assertEquals(
             $titles,
-            CollectionHelper::findAllProductTitles($newProducts)->all()
+            $products->findAllTitles()->all()
         );
     }
 }
