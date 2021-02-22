@@ -66,24 +66,41 @@ class CollectionHelperTest extends TestCase
         ]);
         $sequences->each(function ($sequence){
             // Use the product factory to create one or multiple products
+            $newProducts = Product::factory(count($sequence))
+                ->state($sequence['sequence'])
+                ->create();
             // Use that product to assert the total
+            $this->assertEquals(
+                $sequence['total'],
+                CollectionHelper::findTotalProductsPriceInCard($newProducts)
+            );
         });
     }
 
     /**
      * @test
      */
-    public function find_unique_names_of_used_categories_by_products()
+    public function find_all_product_titles()
     {
         $titles = [
             $this->faker->word,
             $this->faker->word,
             $this->faker->word,
         ];
-
         // Use the titles above in a new sequence to create 3 products
+        $newProducts = Product::factory(3)
+            ->state(new Sequence(
+                ['title' => $titles[0]],
+                ['title' => $titles[1]],
+                ['title' => $titles[2]],
+            ))
+            ->create();
 
         // Assert if the $titles are the same as
+        $this->assertEquals(
+            $titles,
+            CollectionHelper::findAllProductTitles($newProducts)->all()
+        );
     }
 
     public function tearDown(): void
