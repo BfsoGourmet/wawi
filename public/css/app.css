@@ -1,7 +1,16 @@
 .navbar {
     height: 68px;
+    background-image: linear-gradient(
+        to bottom right,
+        var(--blue),
+        var(--cyan)
+    );
 }
 
 .navbar-brand {
     font-size: 32px;
+}
+
+.nav-item {
+    padding: 0;
 }
