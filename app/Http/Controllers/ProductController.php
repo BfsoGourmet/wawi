@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function increasePrice() {
+        Product::increment('price');
         $products = Product::get();
+//        foreach ($products as $product){
+//            $product->price = $product->price + 1;
+//        }
+//
+//        $products->save();
 
-        foreach ($products as $product){
-            $product->price = $product->price + 1;
-            $product->save();
-        }
 
         return view('products.index',['products'=>$products]);
     }
