@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::resources(
     [
         'products' => ProductController::class,
         'categories' => CategoryController::class,
+        'users' => UserManagementController::class,
     ]
 );
 

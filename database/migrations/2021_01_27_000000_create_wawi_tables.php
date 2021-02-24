@@ -13,14 +13,7 @@ class CreateWawiTables extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
-            //$table->remeberToken();
-            $table->timestamps();
-        });
+
 
         Schema::create('producer', function (Blueprint $table) {
             $table->id('id');
@@ -125,7 +118,6 @@ class CreateWawiTables extends Migration
     {
         Schema::dropIfExists('product');
         Schema::dropIfExists('producter');
-        Schema::dropIfExists('user');
         Schema::dropIfExists('category');
         Schema::dropIfExists('seasional_price');
         Schema::dropIfExists('season');

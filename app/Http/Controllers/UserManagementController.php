@@ -1,40 +1,90 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\ProductRequest;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class UserManagementController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | User Management Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * @return View
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('guest')->except('logout');
+        $users = User::paginate(15);
+        return view('users.index', ['users' => $users]);
+    }
+
+    /**
+     * @return View
+     */
+    public function create()
+    {
+        $user = User::get();
+        return view('users.create',['user'=>$user]);
+    }
+
+    /**
+     * @param ProductRequest $request
+     * @return Redirector
+     */
+    public function store(ProductRequest $request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->price = $request->price;
+        $user->save();
+        $user->categories()->sync($request->categories);
+        return redirect(route('products.index'))->withSuccess(__('form.successfully-stored'));
+    }
+
+    /**
+     * @param Product $product
+     * @return View
+     */
+    public function show(User $user)
+    {
+        return view('users.show',['user'=>$user]);
+    }
+
+    /**
+     * @param Product $product
+     * @return View
+     */
+    public function edit(User $product)
+    {
+        $categories = Category::get();
+        return view('users.edit',['product'=>$product,'categories'=>$categories]);
+    }
+
+    /**
+     * @param ProductRequest $request
+     * @param Product $product
+     * @return Redirector
+     */
+    public function update(ProductRequest $request, Product $product)
+    {
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->save();
+        $product->categories()->sync($request->categories);
+        return redirect(route('products.index'))->withSuccess(__('form.successfully-updated'));
+    }
+
+    /**
+     * @param Product $product
+     * @return Redirector
+     * @throws Exception
+     */
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect(route('users.index'))->withSuccess(__('form.successfully-deleted'));
     }
 }
