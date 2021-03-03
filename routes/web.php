@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Route::resources(
   [
     'products' => ProductController::class,
     'categories' => CategoryController::class,
-    'persons' => PersonController::class,
+    'couriers' => CourierController::class,
     'users' => UserManagementController::class,
   ]
 );
