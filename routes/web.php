@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProducerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementController;
@@ -28,6 +29,7 @@ Route::resources(
     'products' => ProductController::class,
     'categories' => CategoryController::class,
     'couriers' => CourierController::class,
+    'producers' => ProducerController::class,
     'users' => UserManagementController::class,
   ]
 );
