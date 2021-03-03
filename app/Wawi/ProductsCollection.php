@@ -19,7 +19,7 @@ class ProductsCollection extends Collection
      * @return float
      */
     public function totalPrice() : float{
-        return $this->sum('price');
+        return $this->sum('prce');
     }
 
     /**
