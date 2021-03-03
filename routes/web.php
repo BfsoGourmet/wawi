@@ -19,16 +19,16 @@ use App\Http\Controllers\PersonController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('home');
 });
 
 Route::resources(
-    [
-        'products' => ProductController::class,
-        'categories' => CategoryController::class,
-        'persons' => PersonController::class,
-        'users' => UserManagementController::class,
-    ]
+  [
+    'products' => ProductController::class,
+    'categories' => CategoryController::class,
+    'persons' => PersonController::class,
+    'users' => UserManagementController::class,
+  ]
 );
 
 Auth::routes();

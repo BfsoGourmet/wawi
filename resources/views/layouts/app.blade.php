@@ -23,15 +23,7 @@
       </span>
     </button>
     <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="{{ url('login') }}">
-          Login
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
-            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-          </svg>
-        </a>
-      </li>
+      @auth
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="{{ url('login') }}">
           Logout
@@ -41,7 +33,17 @@
           </svg>
         </a>
       </li>
-
+      @else
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="{{ url('login') }}">
+          Login
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+          </svg>
+        </a>
+      </li>
+      @endauth
     </ul>
   </nav>
 
@@ -50,6 +52,8 @@
       <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 93vh;">
         <div class="sidebar-sticky pt-3">
           <ul class="nav flex-column">
+            @if (Route::has('login'))
+            @auth
             <li class="nav-item">
               <a class="nav-link active" href="{{ url('/home') }}">
                 <span data-feather="home"></span>
@@ -57,29 +61,33 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="{{route('products.index')}}">
-                <span data-feather="home"></span>
+              <a class="nav-link active" href="{{url('/products')}}">
+                <span data-feather="products"></span>
                 Products <span class="sr-only">(products)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="{{route('categories.index')}}">
-                <span data-feather="home"></span>
+              <a class="nav-link active" href="{{url('/categories')}}">
+                <span data-feather="categories"></span>
                 Categories <span class="sr-only">(categories)</span>
               </a>
             </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="{{route('users.index')}}">
-                      <span data-feather="home"></span>
-                      User Management <span class="sr-only">(user_management)</span>
-                  </a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url('/users')}}">
+                <span data-feather="users"></span>
+                User Management <span class="sr-only">(user_management)</span>
+              </a>
+            </li>
+            @endauth
+            @endif
           </ul>
         </div>
       </nav>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="padding-top: 50px;">
+
         @yield('content')
+
       </main>
     </div>
   </div>
@@ -98,34 +106,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
-  <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 93vh;">
-    <div class="sidebar-sticky pt-3">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
-            <span data-feather="home"></span>
-            Dashboard <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="{{route('products.index')}}">
-            <span data-feather="home"></span>
-            Products <span class="sr-only">(products)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="{{route('categories.index')}}">
-            <span data-feather="home"></span>
-            Categories <span class="sr-only">(categories)</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="padding-top: 50px;">
-    @yield('content')
-  </main>
   </div>
   </div>
 </body>
