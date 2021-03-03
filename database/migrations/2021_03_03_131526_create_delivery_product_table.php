@@ -13,12 +13,12 @@ class CreateDeliveryProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_product', function (Blueprint $table) {
+        Schema::create('delivery_products', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('delivery_id');
-            $table->foreign('product_id')->references('id')->on('product');
-            $table->foreign('delivery_id')->references('id')->on('delivery');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('delivery_id')->references('id')->on('deliveries');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateDeliveryProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_product');
+        Schema::dropIfExists('delivery_products');
     }
 }

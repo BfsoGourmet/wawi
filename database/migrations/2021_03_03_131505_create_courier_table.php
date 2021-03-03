@@ -13,7 +13,7 @@ class CreateCourierTable extends Migration
      */
     public function up()
     {
-        Schema::create('courier', function (Blueprint $table) {
+        Schema::create('couriers', function (Blueprint $table) {
             $table->id('id');
             $table->text('firstname');
             $table->text('lastname');
@@ -29,6 +29,6 @@ class CreateCourierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courier');
+        Schema::dropIfExists('couriers');
     }
 }

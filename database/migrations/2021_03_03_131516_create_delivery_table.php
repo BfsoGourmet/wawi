@@ -13,7 +13,7 @@ class CreateDeliveryTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery', function (Blueprint $table) {
+        Schema::create('deliveries', function (Blueprint $table) {
             $table->id('id');
             $table->text('customer_firstname');
             $table->text('customer_lastname');
@@ -22,7 +22,7 @@ class CreateDeliveryTable extends Migration
             $table->text('delivery_place');
             $table->text('delivery_country');
             $table->unsignedBigInteger('courier_id');
-            $table->foreign('courier_id')->references('id')->on('courier');
+            $table->foreign('courier_id')->references('id')->on('couriers');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateDeliveryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery');
+        Schema::dropIfExists('deliveries');
     }
 }

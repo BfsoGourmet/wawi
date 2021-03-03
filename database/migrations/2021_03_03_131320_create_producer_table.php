@@ -13,7 +13,7 @@ class CreateProducerTable extends Migration
      */
     public function up()
     {
-        Schema::create('producer', function (Blueprint $table) {
+        Schema::create('producers', function (Blueprint $table) {
             $table->id('id');
             $table->text('company');
             $table->text('contact_firstname');
@@ -30,6 +30,6 @@ class CreateProducerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producer');
+        Schema::dropIfExists('producers');
     }
 }

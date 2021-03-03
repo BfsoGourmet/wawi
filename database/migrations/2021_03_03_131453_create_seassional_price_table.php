@@ -13,13 +13,13 @@ class CreateSeassionalPriceTable extends Migration
      */
     public function up()
     {
-        Schema::create('seassional_price', function (Blueprint $table) {
+        Schema::create('seassional_prices', function (Blueprint $table) {
             $table->id('id');
             $table->float('season_price');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('season_id');
-            $table->foreign('product_id')->references('id')->on('product');
-            $table->foreign('season_id')->references('id')->on('season');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSeassionalPriceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seassional_price');
+        Schema::dropIfExists('seassional_prices');
     }
 }
