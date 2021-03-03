@@ -8,8 +8,8 @@
     <form action="{{route('categories.store')}}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="name">{{__('category.name')}}:</label>
-            <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
+            <label for="name">{{__('category.category')}}:</label>
+            <input class="form-control" type="text" name="name" id="name" value="{{ old('category') }}">
         </div>
         <input type="submit" id="submit" class="btn btn-primary">
     </form>

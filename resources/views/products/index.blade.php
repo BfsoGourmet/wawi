@@ -33,12 +33,7 @@
                 <td>
                     CHF {{$product->price}}
                 </td>
-                <td>
-                    @foreach($product->categories as $category)
-                        {{$category->name}}
-                        @if (!$loop->last),@endif
-                    @endforeach
-                </td>
+                <td>KAT</td>
                 <td>
 
                     <form method="POST" id="delete_product" action="{{route('products.destroy',['product'=>$product])}}">

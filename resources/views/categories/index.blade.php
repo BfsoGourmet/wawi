@@ -11,7 +11,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">{{__('category.name')}}</th>
+            <th scope="col">{{__('category.category')}}</th>
             <th scope="col">{{__('form.edit')}}</th>
             <th scope="col">{{__('form.destroy')}}</th>
         </tr>
@@ -25,7 +25,7 @@
                 </th>
                 <td>
                     <a href="{{route('categories.show',['category'=>$category])}}">
-                        {{$category->name}}
+                        {{$category->category}}
                     </a>
                 </td>
                 <td>

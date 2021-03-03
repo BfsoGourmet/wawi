@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="categories">{{__('Kurier')}}:</label>
+                <label for="kurier">{{__('Kurier')}}:</label>
                 <select class="form-control" name="kurier" id="kurier">
 
                 </select>
@@ -41,10 +41,10 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="categories">{{__('Produktkategorie')}}:</label>
-                <select class="form-control" name="categories[]" id="categories" multiple>
+                <label for="category">{{__('Produktkategorie')}}:</label>
+                <select class="form-control" name="category" id="category">
                     @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value="{{$category->id}}">{{$category->category}}</option>
                     @endforeach
                 </select>
             </div>
@@ -52,7 +52,7 @@
         <div class="form-group">
             <div class="col-sm-4">
                 <label for="exampleFormControlTextarea1">{{__('Beschreibung')}}:</label>
-                <textarea class="form-control" id="beschreibung" rows="3"></textarea>
+                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="3"></textarea>
             </div>
         </div>
         <div class="form-group">
