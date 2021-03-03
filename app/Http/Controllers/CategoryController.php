@@ -34,7 +34,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = new Category();
-        $category->name = $request->name;
+        $category->category = $request->category;
         $category->save();
 
         return redirect(route('categories.index'))->withSuccess(__('form.successfully-stored'));
@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $category->name = $request->name;
+        $category->category = $request->category;
         $category->save();
 
         return redirect(route('categories.index'))->withSuccess(__('form.successfully-updated'));
