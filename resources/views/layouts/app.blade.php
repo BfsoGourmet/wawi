@@ -97,11 +97,12 @@
       </nav>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="padding-top: 50px;">
-        @auth
-        @yield('content')
-        @endauth
 
+        @if (Auth::check())
+        @yield('content')
+        @else
         @yield('login')
+        @endif
 
       </main>
     </div>

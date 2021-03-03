@@ -20,20 +20,22 @@ use App\Http\Controllers\PersonController;
 |
 */
 
-Route::get('/', function () {
-  return view('home');
+
+
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/', function () {
+    return view('home');
+  });
+  Route::resources(
+    [
+      'products' => ProductController::class,
+      'categories' => CategoryController::class,
+      'couriers' => CourierController::class,
+      'users' => UserManagementController::class,
+    ]
+  );
+  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
-Route::resources(
-  [
-    'products' => ProductController::class,
-    'categories' => CategoryController::class,
-    'couriers' => CourierController::class,
-    'producers' => ProducerController::class,
-    'users' => UserManagementController::class,
-  ]
-);
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
