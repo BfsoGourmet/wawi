@@ -84,6 +84,12 @@
                 Kuriere <span class="sr-only">(couriers)</span>
               </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{url('/producers')}}">
+                    <span data-feather="producers"></span>
+                    Produzenten <span class="sr-only">(producers)</span>
+                </a>
+            </li>
             @endauth
             @endif
           </ul>
