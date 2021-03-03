@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,8 @@ Route::resources(
     [
         'products' => ProductController::class,
         'categories' => CategoryController::class,
+        'persons' => PersonController::class,
+        'users' => UserManagementController::class,
     ]
 );
 

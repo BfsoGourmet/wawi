@@ -68,6 +68,12 @@
                 Categories <span class="sr-only">(categories)</span>
               </a>
             </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{route('users.index')}}">
+                      <span data-feather="home"></span>
+                      User Management <span class="sr-only">(user_management)</span>
+                  </a>
+              </li>
           </ul>
         </div>
       </nav>
