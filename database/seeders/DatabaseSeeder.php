@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Courier;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
