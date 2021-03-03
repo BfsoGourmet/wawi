@@ -78,6 +78,12 @@
                 User Management <span class="sr-only">(user_management)</span>
               </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{url('/couriers')}}">
+                    <span data-feather="couriers"></span>
+                     Kuriere <span class="sr-only">(couriers)</span>
+                </a>
+            </li>
             @endauth
             @endif
           </ul>
@@ -87,6 +93,7 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="padding-top: 50px;">
 
         @yield('content')
+        @yield('login')
 
       </main>
     </div>
