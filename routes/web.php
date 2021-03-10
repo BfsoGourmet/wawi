@@ -20,7 +20,7 @@ use App\Http\Controllers\PersonController;
 |
 */
 
-
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/', function () {
@@ -32,10 +32,10 @@ Route::group(['middleware' => ['auth']], function () {
       'categories' => CategoryController::class,
       'couriers' => CourierController::class,
       'users' => UserManagementController::class,
+      'producers' => ProducerController::class,
     ]
   );
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
 
 Auth::routes();
