@@ -21,6 +21,7 @@ use App\Http\Controllers\PersonController;
 */
 
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'index'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/', function () {
