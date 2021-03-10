@@ -35,11 +35,22 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+
         $product = new Product();
         $product->name = $request->name;
+        $product->sku = "sku";
+        $product->is_live = 0;
+        $product->short_desc = "";
+        $product->long_desc = "";
+        $product->courir_id = 1;
+        $product->stock_count = 0;
         $product->price = $request->price;
+        $product->calories = $request->kalorien;
+        $product->sugar = $request->zucker;
+        $product->declaration = "";
+        $product->producer_id = 1;
+        $product->category_id = $request->category;
         $product->save();
-        $product->categories()->sync($request->categories);
         return redirect(route('products.index'))->withSuccess(__('form.successfully-stored'));
     }
 
@@ -70,9 +81,19 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $product->name = $request->name;
+        $product->sku = "sku";
+        $product->is_live = 0;
+        $product->short_desc = "";
+        $product->long_desc = "";
+        $product->courir_id = 1;
+        $product->stock_count = 0;
         $product->price = $request->price;
+        $product->calories = $request->kalorien;
+        $product->sugar = $request->zucker;
+        $product->declaration = "";
+        $product->producer_id = 1;
+        $product->category_id = $request->category;
         $product->save();
-        $product->categories()->sync($request->categories);
         return redirect(route('products.index'))->withSuccess(__('form.successfully-updated'));
     }
 

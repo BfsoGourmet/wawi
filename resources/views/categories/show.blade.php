@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>{{$category->name}}</h1>
+    <h1>{{$category->category}}</h1>
     <table class="table table-sm">
         <thead>
         <tr>
@@ -12,8 +12,8 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{__('category.name')}}</td>
-            <td>{{$category->name}}</td>
+            <td>{{__('category.category')}}</td>
+            <td>{{$category->category}}</td>
         </tr>
         </tbody>
     </table>
