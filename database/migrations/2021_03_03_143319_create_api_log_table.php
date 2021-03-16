@@ -13,10 +13,12 @@ class CreateApiLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('api_log', function (Blueprint $table) {
+        Schema::create('api_logs', function (Blueprint $table) {
             $table->id();
-            $table->text('status');
+            $table->integer('status_id');
             $table->text('message');
+            $table->integer('api_id');
+            $table->string('table');
             $table->timestamps();
         });
     }

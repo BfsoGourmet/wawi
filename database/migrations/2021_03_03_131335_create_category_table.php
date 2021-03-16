@@ -16,6 +16,7 @@ class CreateCategoryTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id('id');
             $table->text('category');
+            $table->boolean('is_deleted');
             $table->timestamps();
         });
     }

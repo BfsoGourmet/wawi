@@ -19,6 +19,7 @@ class CreateProducerTable extends Migration
             $table->text('contact_firstname');
             $table->text('contact_lastname');
             $table->text('contact_phone');
+            $table->boolean('is_deleted');
             $table->timestamps();
         });
     }

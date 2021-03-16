@@ -29,6 +29,7 @@ class CreateProductTable extends Migration
             $table->unsignedBigInteger('producer_id');
             $table->unsignedBigInteger('category_id');
             $table->foreign('producer_id')->references('id')->on('producers');
+            $table->boolean('is_deleted');
             $table->timestamps();
         });
     }

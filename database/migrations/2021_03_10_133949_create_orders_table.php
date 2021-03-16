@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('customer_id');
             $table->integer('status_id');
-            $table->dict('customer_id');
             $table->timestamps();
         });
     }

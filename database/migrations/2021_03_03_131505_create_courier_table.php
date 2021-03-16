@@ -18,6 +18,7 @@ class CreateCourierTable extends Migration
             $table->text('firstname');
             $table->text('lastname');
             $table->text('phone');
+            $table->boolean('is_deleted');
             $table->timestamps();
         });
     }
