@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProducerController;
+use App\Http\Controllers\DeliveryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\PersonController;
 */
 
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'index'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/', function () {
@@ -33,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
       'couriers' => CourierController::class,
       'users' => UserManagementController::class,
       'producers' => ProducerController::class,
+      'deliveries' => DeliveryController::class,
     ]
   );
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
