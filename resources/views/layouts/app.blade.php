@@ -90,6 +90,12 @@
                 Produzenten <span class="sr-only">(producers)</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url('/season')}}">
+                <span data-feather="season"></span>
+                Season <span class="sr-only">(season)</span>
+              </a>
+            </li>
             @endauth
             @endif
           </ul>

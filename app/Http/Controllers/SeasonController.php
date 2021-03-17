@@ -9,15 +9,15 @@ use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Redirector;
 
-class ProductController extends Controller
+class SeasonController extends Controller
 {
     /**
      * @return View
      */
     public function index()
     {
-        $products = Product::paginate(15);
-        return view('products.index', ['products' => $products]);
+        $seasons = Season::paginate(15);
+        return view('seasons.index', ['seasons' => $seasons]);
     }
 
     /**
@@ -25,33 +25,33 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::get();
-        return view('products.create',['categories'=>$categories]);
+        $seasons = Season::get();
+        return view('seasons.create',['seasons'=>$seasons]);
     }
 
     /**
-     * @param ProductRequest $request
+     * @param SeasonRequest $request
      * @return Redirector
      */
-    public function store(ProductRequest $request)
+    public function store(SeasonRequest $request)
     {
 
-        $product = new Product();
-        $product->name = $request->name;
-        $product->sku = "sku";
-        $product->is_live = 0;
-        $product->short_desc = "";
-        $product->long_desc = "";
-        $product->courir_id = 1;
-        $product->stock_count = 0;
-        $product->price = $request->price;
-        $product->calories = $request->kalorien;
-        $product->sugar = $request->zucker;
-        $product->declaration = "";
-        $product->producer_id = 1;
-        $product->category_id = $request->category;
-        $product->save();
-        return redirect(route('products.index'))->withSuccess(__('form.successfully-stored'));
+        $season = new Product();
+        $season->name = $request->name;
+        $season->date_from = "sku";
+        $season->is_live = 0;
+        $season->short_desc = "";
+        $season->long_desc = "";
+        $season->courir_id = 1;
+        $season->stock_count = 0;
+        $season->price = $request->price;
+        $season->calories = $request->kalorien;
+        $season->sugar = $request->zucker;
+        $season->declaration = "";
+        $season->producer_id = 1;
+        $season->category_id = $request->category;
+        $season->save();
+        return redirect(route('seasons.index'))->withSuccess(__('form.successfully-stored'));
     }
 
     /**

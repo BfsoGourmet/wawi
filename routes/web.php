@@ -8,6 +8,7 @@ use App\Http\Controllers\DeliveryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\PersonController;
 
 /*
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
       'users' => UserManagementController::class,
       'producers' => ProducerController::class,
       'deliveries' => DeliveryController::class,
+      'seasons' => SeasonController::class,
     ]
   );
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
