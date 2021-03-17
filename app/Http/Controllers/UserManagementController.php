@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Hash;
 
 class UserManagementController extends Controller
 {
@@ -19,6 +21,10 @@ class UserManagementController extends Controller
     {
         $users = User::paginate(15);
         return view('users.index', ['users' => $users]);
+    }
+
+    public function isAdmin() {
+        print_r($_SESSION);
     }
 
     /**
@@ -34,14 +40,16 @@ class UserManagementController extends Controller
      * @param ProductRequest $request
      * @return Redirector
      */
-    public function store(ProductRequest $request)
+    public function store(UserRequest $request)
     {
         $user = new User();
         $user->name = $request->name;
-        $user->price = $request->price;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->role = $request->role;
+        $user->password = Hash::make($user->password);
         $user->save();
-        $user->categories()->sync($request->categories);
-        return redirect(route('products.index'))->withSuccess(__('form.successfully-stored'));
+        return redirect(route('users.index'))->withSuccess(__('form.successfully-stored'));
     }
 
     /**
@@ -57,10 +65,9 @@ class UserManagementController extends Controller
      * @param Product $product
      * @return View
      */
-    public function edit(User $product)
+    public function edit(User $user)
     {
-        $categories = Category::get();
-        return view('users.edit',['product'=>$product,'categories'=>$categories]);
+        return view('users.edit',['user'=>$user]);
     }
 
     /**
@@ -68,13 +75,14 @@ class UserManagementController extends Controller
      * @param Product $product
      * @return Redirector
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(UserRequest $request, User $user)
     {
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->save();
-        $product->categories()->sync($request->categories);
-        return redirect(route('products.index'))->withSuccess(__('form.successfully-updated'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+
+        $user->save();
+        return redirect(route('users.index'))->withSuccess(__('form.successfully-updated'));
     }
 
     /**
@@ -82,9 +90,9 @@ class UserManagementController extends Controller
      * @return Redirector
      * @throws Exception
      */
-    public function destroy(Product $product)
+    public function destroy(User $user)
     {
-        $product->delete();
+        $user->delete();
         return redirect(route('users.index'))->withSuccess(__('form.successfully-deleted'));
     }
 }

@@ -13,7 +13,6 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Password</th>
             <th scope="col">Rolle</th>
             <th scope="col">&nbsp</th>
         </tr>
@@ -31,11 +30,9 @@
                     </a>
                 </td>
                 <td>
-                     {{$user->email}}
+                    {{$user->email}}
                 </td>
-                <td>
-                    {{$user->password}}
-                </td>
+
                 <td>
                     {{$user->role}}
                 </td>
