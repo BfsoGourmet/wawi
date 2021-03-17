@@ -49,7 +49,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 93vh;">
+      <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 100vh; position:fixed;">
         <div class="sidebar-sticky pt-3">
           <ul class="nav flex-column">
             @if (Route::has('login'))
@@ -60,42 +60,51 @@
                 Dashboard <span class="sr-only">(current)</span>
               </a>
             </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url('/deliveries')}}">
+                      <span data-feather="deliveries"></span>
+                      Bestellungen <span class="sr-only">(deliveries)</span>
+                  </a>
+              </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/products')}}">
                 <span data-feather="products"></span>
-                Products <span class="sr-only">(products)</span>
+                Produkte <span class="sr-only">(products)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/categories')}}">
                 <span data-feather="categories"></span>
-                Categories <span class="sr-only">(categories)</span>
+                Kategorien <span class="sr-only">(categories)</span>
               </a>
             </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url('/producers')}}">
+                      <span data-feather="producers"></span>
+                      Produzenten <span class="sr-only">(producers)</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url('/couriers')}}">
+                      <span data-feather="couriers"></span>
+                      Kuriere <span class="sr-only">(couriers)</span>
+                  </a>
+              </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/users')}}">
                 <span data-feather="users"></span>
                 User Management <span class="sr-only">(user_management)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{{url('/couriers')}}">
-                <span data-feather="couriers"></span>
-                Kuriere <span class="sr-only">(couriers)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{{url('/producers')}}">
-                <span data-feather="producers"></span>
-                Produzenten <span class="sr-only">(producers)</span>
-              </a>
-            </li>
+
+
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/season')}}">
                 <span data-feather="season"></span>
-                Season <span class="sr-only">(season)</span>
+                Saison <span class="sr-only">(season)</span>
               </a>
             </li>
+
             @endauth
             @endif
           </ul>
