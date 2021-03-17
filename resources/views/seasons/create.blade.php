@@ -15,12 +15,6 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="price">{{__('Preis')}}:</label>
-                <input class="form-control" type="text" name="price" id="price" value="{{ old('price') }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
                 <label for="price">{{__('Datum von')}}:</label>
                 <input class="form-control" type="date" name="date_from" id="date_from" value="{{ old('date_from') }}">
             </div>

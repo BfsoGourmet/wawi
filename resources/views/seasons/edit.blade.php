@@ -10,13 +10,7 @@
         <div class="form-group">
             <div class="col-sm-4">
                 <label for="name">{{__('Bezeichnung')}}:</label>
-                <input class="form-control" type="text" name="name" value="{{$season->name}}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="price">{{__('Preis')}}:</label>
-                <input class="form-control" type="text" name="price" value="{{$season->price}}">
+                <input class="form-control" type="text" name="name" value="{{$season->season}}">
             </div>
         </div>
         <div class="form-group">

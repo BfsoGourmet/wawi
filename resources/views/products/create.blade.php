@@ -21,6 +21,22 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
+                <label for="price">{{__('Saison Preis')}}:</label>
+                <input class="form-control" type="text" name="season_price" id="season_price" value="{{ old('season_price') }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="category">{{__('Saison')}}:</label>
+                <select class="form-control" name="season_id" id="season_id">
+                    @foreach($seasons as $season)
+                        <option value="{{$season->id}}">{{$season->season}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
                 <label for="price">{{__('Spezial Preis')}}:</label>
                 <input class="form-control" type="text" name="special_price" id="special_price" value="{{ old('special_price') }}">
             </div>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\SeasonRequest;
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Season;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Redirector;
@@ -36,12 +36,10 @@ class SeasonController extends Controller
     public function store(SeasonRequest $request)
     {
 
-        $season = new Product();
+        $season = new Season();
         $season->season = $request->name;
         $season->date_from = $request->date_from;
         $season->date_to = $request->date_to;
-        $season->create_at = date();
-        $season->update_at = date();
         $season->save();
         return redirect(route('seasons.index'))->withSuccess(__('form.successfully-stored'));
     }
@@ -74,7 +72,6 @@ class SeasonController extends Controller
         $season->season = $request->name;
         $season->date_from = $request->date_from;
         $season->date_to = $request->date_to;
-        $season->update_at = date();
         $season->save();
         return redirect(route('seasons.index'))->withSuccess(__('form.successfully-updated'));
     }

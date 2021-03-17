@@ -21,6 +21,26 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
+                <label for="price">{{__('Saison Preis2')}}:</label>
+                <input class="form-control" type="text" name="season_price" value="{{$product->season_price}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="category">{{__('Saison')}}:</label>
+                <select class="form-control" name="season_id" id="season_id">
+                    @foreach($seasons as $season)
+                        @if($product->season_id != $season->id)
+                            <option value="{{$season->id}}">{{$season->season}}</option>
+                        @else
+                            <option value="{{$season->id}}" selected="selected">{{$season->season}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
                 <label for="price">{{__('Spezial Preis')}}:</label>
                 <input class="form-control" type="text" name="special_price" value="{{$product->special_price}}">
             </div>

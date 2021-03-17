@@ -99,9 +99,9 @@
 
 
             <li class="nav-item">
-              <a class="nav-link active" href="{{url('/season')}}">
-                <span data-feather="season"></span>
-                Saison <span class="sr-only">(season)</span>
+              <a class="nav-link active" href="{{url('/seasons')}}">
+                <span data-feather="seasons"></span>
+                Saison <span class="sr-only">(seasons)</span>
               </a>
             </li>
 

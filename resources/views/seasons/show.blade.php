@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{__('product.price')}}</td>
+            <td>{{__('season.price')}}</td>
             <td>CHF {{$product->price}}</td>
         </tr>
         </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Season;
 use App\Models\Product;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -26,7 +27,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('products.create',['categories'=>$categories]);
+        $seasons = Season::get();
+        return view('products.create',['categories'=>$categories, 'seasons'=>$seasons]);
     }
 
     /**
@@ -45,8 +47,8 @@ class ProductController extends Controller
         $product->courir_id = 1;
         $product->stock_count = 0;
         $product->price = $request->price;
-        $product->season_id = 1;
-        $product->season_price = 13;
+        $product->season_id = $request->season_id;
+        $product->season_price = $request->season_price;
         $product->special_price = $request->special_price;
         $product->special_price_active = $request->special_price_active ? 1 : 0;
         $product->calories = $request->kalorien;
@@ -74,7 +76,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::get();
-        return view('products.edit',['product'=>$product,'categories'=>$categories]);
+        $seasons = Season::get();
+        return view('products.edit',['categories'=>$categories, 'seasons'=>$seasons]);
     }
 
     /**
@@ -92,8 +95,8 @@ class ProductController extends Controller
         $product->courir_id = 1;
         $product->stock_count = 0;
         $product->price = $request->price;
-        $product->season_id = 1;
-        $product->season_price = 13;
+        $product->season_id = $request->season_id;
+        $product->season_price = $request->season_price;
         $product->special_price = $request->special_price;
         $product->special_price_active = $request->special_price_active;
         $product->calories = $request->kalorien;

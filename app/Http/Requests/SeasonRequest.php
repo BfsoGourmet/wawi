@@ -30,7 +30,6 @@ class SeasonRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required|numeric',
             'date_from' => 'required',
             'date_to' => 'required'
         ];

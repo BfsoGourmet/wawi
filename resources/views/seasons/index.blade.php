@@ -12,8 +12,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">{{__('season.name')}}</th>
-            <th scope="col">{{__('season.price')}}</th>
+            <th scope="col">{{__('season.season')}}</th>
             <th scope="col">{{__('season.date_from')}}</th>
             <th scope="col">{{__('season.date_to')}}</th>
             <th scope="col">&nbsp;</th>
@@ -28,13 +27,15 @@
                 </th>
                 <td>
                     <a href="{{route('seasons.show',['season'=>$season])}}">
-                        {{$season->name}}
+                        {{$season->season}}
                     </a>
                 </td>
                 <td>
-                    CHF {{$season->price}}
+                    {{$season->date_from}}
                 </td>
-                <td>KAT</td>
+                <td>
+                    {{$season->date_to}}
+                </td>
                 <td>
 
                     <form method="POST" id="delete_product" action="{{route('seasons.destroy',['season'=>$season])}}">
