@@ -77,12 +77,17 @@ class UserManagementController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role = $request->role;
+        try {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role = $request->role;
 
-        $user->save();
-        return redirect(route('users.index'))->withSuccess(__('form.successfully-updated'));
+            $user->save();
+            return redirect(route('users.index'))->withSuccess(__('form.successfully-updated'));
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+
     }
 
     /**
