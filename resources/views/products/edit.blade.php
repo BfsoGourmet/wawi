@@ -47,8 +47,8 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="price">{{__('Spezial Preis Aktiv')}}:</label>
-                <input class="form-control" type="checkbox" name="special_price_active" value="{{$product->special_price_active}}">
+                <label for="special_price_active">{{__('Spezial Preis Aktiv')}}:</label>
+                <input type="checkbox" id="special_price_active" name="special_price_active" value="{{$product->special_price_active}}">
             </div>
         </div>
         <div class="form-group">

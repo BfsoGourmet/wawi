@@ -77,7 +77,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $seasons = Season::get();
-        return view('products.edit',['categories'=>$categories, 'seasons'=>$seasons]);
+        return view('products.edit',['product'=>$product, 'categories'=>$categories, 'seasons'=>$seasons]);
     }
 
     /**
