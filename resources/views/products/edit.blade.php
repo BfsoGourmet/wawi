@@ -21,6 +21,18 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
+                <label for="price">{{__('Spezial Preis')}}:</label>
+                <input class="form-control" type="text" name="special_price" value="{{$product->special_price}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="price">{{__('Spezial Preis Aktiv')}}:</label>
+                <input class="form-control" type="checkbox" name="special_price_active" value="{{$product->special_price_active}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
                 <label for="price">{{__('Kalorien')}}:</label>
                 <input class="form-control" type="text" name="kalorien" id="kalorien" value="{{$product->calories}}">
             </div>

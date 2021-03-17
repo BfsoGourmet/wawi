@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>{{$product->name}}</h1>
+    <h1>{{$season->name}}</h1>
     <table class="table table-sm">
         <thead>
         <tr>

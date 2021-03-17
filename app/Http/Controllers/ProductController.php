@@ -45,6 +45,10 @@ class ProductController extends Controller
         $product->courir_id = 1;
         $product->stock_count = 0;
         $product->price = $request->price;
+        $product->season_id = 1;
+        $product->season_price = 13;
+        $product->special_price = $request->special_price;
+        $product->special_price_active = $request->special_price_active ? 1 : 0;
         $product->calories = $request->kalorien;
         $product->sugar = $request->zucker;
         $product->declaration = "";
@@ -88,6 +92,10 @@ class ProductController extends Controller
         $product->courir_id = 1;
         $product->stock_count = 0;
         $product->price = $request->price;
+        $product->season_id = 1;
+        $product->season_price = 13;
+        $product->special_price = $request->special_price;
+        $product->special_price_active = $request->special_price_active;
         $product->calories = $request->kalorien;
         $product->sugar = $request->zucker;
         $product->declaration = "";

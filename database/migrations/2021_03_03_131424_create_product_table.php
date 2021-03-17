@@ -22,7 +22,7 @@ class CreateProductTable extends Migration {
       $table->integer('stock_count');
       $table->float('price');
       $table->float('special_price');
-      $table->boolean('special_price_active');
+      $table->boolean('special_price_active')->default(0);
       $table->float('season_price');
       $table->integer('season_id');
       $table->string('calories');
