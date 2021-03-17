@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
  *
  * @package App\Http\Requests
  */
-class ProductRequest extends FormRequest
+class SeasonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

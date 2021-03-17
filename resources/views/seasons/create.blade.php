@@ -56,24 +56,6 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Spezial Preis')}}:</label>
-                <input class="form-control" type="text" name="special_prices" id="special_prices" value="{{ old('price') }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Von')}}:</label>
-                <input class="form-control" type="date" name="date_from" id="date_from" min="{{date('Y-m-d')}}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Bis')}}:</label>
-                <input class="form-control" type="date" name="date_to" id="date_to" min="{{date('Y-m-d')}}">
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-sm-4 text-right">
                 <input type="submit" id="submit" value="Speichern" class="btn btn-primary">
             </div>
