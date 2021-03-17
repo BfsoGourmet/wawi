@@ -49,7 +49,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 93vh;">
+      <nav id="sidebarMenu" class="col-md-2 d-none d-md-block bg-light sidebar" style="height: 100vh; position:fixed;">
         <div class="sidebar-sticky pt-3">
           <ul class="nav flex-column">
             @if (Route::has('login'))
