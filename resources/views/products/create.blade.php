@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="category">{{__('Saison')}}:</label>
+                <label for="season_id">{{__('Saison')}}:</label>
                 <select class="form-control" name="season_id" id="season_id">
                     @foreach($seasons as $season)
                         <option value="{{$season->id}}">{{$season->season}}</option>
@@ -61,9 +61,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="kurier">{{__('Kurier')}}:</label>
-                <select class="form-control" name="kurier" id="kurier">
-
+                <label for="courier">{{__('Kurier')}}:</label>
+                <select class="form-control" name="courier" id="courier">
+                    @foreach($couriers as $courier)
+                        <option value="{{$courier->id}}">{{$courier->firstname}} {{$courier->lastname}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -79,8 +81,18 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Beschreibung')}}:</label>
-                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="3"></textarea>
+                <label for="producer_id">{{__('Produzent')}}:</label>
+                <select class="form-control" name="producer_id" id="producer_id">
+                    @foreach($producers as $producer)
+                        <option value="{{$producer->id}}">{{$producer->contact_firstname}} {{$producer->contact_lastname}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="declaration">{{__('Beschreibung')}}:</label>
+                <textarea class="form-control" id="declaration" name="declaration" rows="3"></textarea>
             </div>
         </div>
         <div class="form-group">

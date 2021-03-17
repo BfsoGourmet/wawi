@@ -48,7 +48,7 @@
         <div class="form-group">
             <div class="col-sm-4">
                 <label for="special_price_active">{{__('Spezial Preis Aktiv')}}:</label>
-                <input type="checkbox" id="special_price_active" name="special_price_active" value="{{$product->special_price_active}}">
+                <input type="checkbox" id="special_price_active" name="special_price_active" {{$product->special_price_active ? "checked" : ""}} value="1">
             </div>
         </div>
         <div class="form-group">
@@ -65,15 +65,21 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="categories">{{__('Kurier')}}:</label>
-                <select class="form-control" name="kurier" id="kurier">
-
+                <label for="courier">{{__('Kurier')}}:</label>
+                <select class="form-control" name="courier" id="courier">
+                    @foreach($couriers as $courier)
+                        @if($product->courir_id != $courier->id)
+                            <option value="{{$courier->id}}">{{$courier->firstname}} {{$courier->lastname}}</option>
+                        @else
+                            <option value="{{$courier->id}}" selected="selected">{{$courier->firstname}} {{$courier->lastname}}</option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="category">{{__('product.category')}}:</label>
+                <label for="category">{{__('Produktkategorie')}}:</label>
                 <select class="form-control" name="category" id="category">
                     @foreach($categories as $category)
                         @if($product->category_id != $category->id)
@@ -87,8 +93,22 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Beschreibung')}}:</label>
-                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="3"></textarea>
+                <label for="producer_id">{{__('Produzent')}}:</label>
+                <select class="form-control" name="producer_id" id="producer_id">
+                    @foreach($producers as $producer)
+                        @if($product->producer_id != $producer->id)
+                            <option value="{{$producer->id}}">{{$producer->contact_firstname}} {{$producer->contact_lastname}}</option>
+                        @else
+                            <option value="{{$producer->id}}" selected="selected">{{$producer->contact_firstname}} {{$producer->contact_lastname}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label for="declaration">{{__('Beschreibung')}}:</label>
+                <textarea class="form-control" id="declaration" name="declaration" rows="3">{{$product->declaration}}</textarea>
             </div>
         </div>
         <div class="form-group">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Producer;
 use App\Models\Season;
+use App\Models\Courier;
 use App\Models\Product;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -28,7 +30,9 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $seasons = Season::get();
-        return view('products.create',['categories'=>$categories, 'seasons'=>$seasons]);
+        $couriers = Courier::get();
+        $producers = Producer::get();
+        return view('products.create',['categories'=>$categories, 'seasons'=>$seasons, 'couriers'=>$couriers,'producers'=>$producers]);
     }
 
     /**
@@ -44,7 +48,7 @@ class ProductController extends Controller
         $product->is_live = 0;
         $product->short_desc = "";
         $product->long_desc = "";
-        $product->courir_id = 1;
+        $product->courir_id = $request->courier;
         $product->stock_count = 0;
         $product->price = $request->price;
         $product->season_id = $request->season_id;
@@ -53,8 +57,8 @@ class ProductController extends Controller
         $product->special_price_active = $request->special_price_active ? 1 : 0;
         $product->calories = $request->kalorien;
         $product->sugar = $request->zucker;
-        $product->declaration = "";
-        $product->producer_id = 1;
+        $product->declaration = $request->declaration;
+        $product->producer_id = $request->producer_id;
         $product->category_id = $request->category;
         $product->save();
         return redirect(route('products.index'))->withSuccess(__('form.successfully-stored'));
@@ -77,7 +81,9 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $seasons = Season::get();
-        return view('products.edit',['product'=>$product, 'categories'=>$categories, 'seasons'=>$seasons]);
+        $couriers = Courier::get();
+        $producers = Producer::get();
+        return view('products.edit',['product'=>$product, 'categories'=>$categories, 'seasons'=>$seasons, 'couriers'=>$couriers, 'producers'=>$producers]);
     }
 
     /**
@@ -92,17 +98,17 @@ class ProductController extends Controller
         $product->is_live = 0;
         $product->short_desc = "";
         $product->long_desc = "";
-        $product->courir_id = 1;
+        $product->courir_id = $request->courier;
         $product->stock_count = 0;
         $product->price = $request->price;
         $product->season_id = $request->season_id;
         $product->season_price = $request->season_price;
         $product->special_price = $request->special_price;
-        $product->special_price_active = $request->special_price_active;
+        $product->special_price_active = $request->special_price_active ? 1 : 0;
         $product->calories = $request->kalorien;
         $product->sugar = $request->zucker;
-        $product->declaration = "";
-        $product->producer_id = 1;
+        $product->declaration = $request->declaration;
+        $product->producer_id = $request->producer_id;
         $product->category_id = $request->category;
         $product->save();
         return redirect(route('products.index'))->withSuccess(__('form.successfully-updated'));
