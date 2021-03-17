@@ -96,6 +96,12 @@
                 Season <span class="sr-only">(season)</span>
               </a>
             </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url('/deliveries')}}">
+                      <span data-feather="deliveries"></span>
+                      Bestellungen <span class="sr-only">(deliveries)</span>
+                  </a>
+              </li>
             @endauth
             @endif
           </ul>

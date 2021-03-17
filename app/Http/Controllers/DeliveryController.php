@@ -19,14 +19,6 @@ class DeliveryController extends Controller
         return view('deliveries.index', ['deliveries' => $deliveries]);
     }
 
-    /**
-     * @param Delivery $delivery
-     * @return View
-     */
-    public function edit(Delivery $delivery)
-    {
-        return view('deliveries.edit',['delivery'=>$delivery]);
-    }
 
     /**
      * @param DeliveryRequest $request
