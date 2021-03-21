@@ -30,10 +30,18 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'short_desc' => 'required',
+            'long_desc' => 'required',
+            'declaration' => 'required',
+            'calories' => 'required',
+            'sugar' => 'required',
             'price' => 'required|numeric',
-            'special_price' => 'required|numeric',
             'special_price_active' => 'nullable',
-            'category' => 'required|integer'
+            'is_live' => 'nullable',
+            'category' => 'required|integer',
+            'producer_id' => 'required|integer',
+            'courier' => 'required|integer',
+            'stock_count' => 'required|integer'
         ];
     }
 }
