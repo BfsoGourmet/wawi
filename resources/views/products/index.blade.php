@@ -15,6 +15,7 @@
             <th scope="col">{{__('product.name')}}</th>
             <th scope="col">{{__('product.price')}}</th>
             <th scope="col">{{__('catalog.categories')}}</th>
+            <th scope="col">{{__('Ist Aktiv')}}</th>
             <th scope="col">&nbsp;</th>
         </tr>
         </thead>
@@ -56,6 +57,7 @@
                         @endif
                     @endforeach
                 </td>
+                <td>{{$product->is_live ? "Ja" : "Nein"}}</td>
                 <td>
 
                     <form method="POST" id="delete_product" action="{{route('products.destroy',['product'=>$product])}}">
