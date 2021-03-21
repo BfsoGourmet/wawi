@@ -20,7 +20,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(15);
-        return view('products.index', ['products' => $products]);
+        $categories = Category::get();
+        $seasons = Season::get();
+        return view('products.index', ['products' => $products, 'seasons'=>$seasons, 'categories'=>$categories]);
     }
 
     /**
@@ -70,7 +72,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show',['product'=>$product]);
+        $categories = Category::get();
+        $seasons = Season::get();
+        $couriers = Courier::get();
+        $producers = Producer::get();
+        return view('products.show',['product'=>$product, 'categories'=>$categories, 'seasons'=>$seasons, 'couriers'=>$couriers, 'producers'=>$producers]);
     }
 
     /**

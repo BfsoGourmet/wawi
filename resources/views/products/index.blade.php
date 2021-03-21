@@ -21,6 +21,16 @@
         <tbody>
 
         @foreach($products as $product)
+            @if($product->season_id >= 1)
+                @foreach($seasons as $season)
+                    @if($product->season_id == $season->id)
+                        @php
+                            $season_date_from = $season->date_from;
+                            $season_date_to = $season->date_to;
+                        @endphp
+                    @endif
+                @endforeach
+            @endif
             <tr>
                 <th scope="row">
                     {{$product->id}}
@@ -31,9 +41,21 @@
                     </a>
                 </td>
                 <td>
-                    CHF {{$product->price}}
+                    @if($product->special_price_active)
+                        CHF {{$product->special_price}} *Spezial
+                    @elseif($season_date_from <= date("Y-m-d") AND $season_date_to >= date("Y-m-d"))
+                        CHF {{$product->season_price}} *Saison
+                    @else
+                        CHF {{$product->price}}
+                    @endif
                 </td>
-                <td>KAT</td>
+                <td>
+                    @foreach($categories as $category)
+                        @if($product->category_id == $category->id)
+                            {{$category->category}}
+                        @endif
+                    @endforeach
+                </td>
                 <td>
 
                     <form method="POST" id="delete_product" action="{{route('products.destroy',['product'=>$product])}}">
