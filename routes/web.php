@@ -34,20 +34,11 @@ Route::group(['middleware' => ['auth']], function () {
   });
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-  Route::group(['middleware' => ['admin']], function () {
+  Route::group(['middleware' => ['guest']], function () {
     Route::resources(
-      [
-        'products' => ProductController::class,
-        'categories' => CategoryController::class,
-        'couriers' => CourierController::class,
-        'users' => UserManagementController::class,
-        'producers' => ProducerController::class,
-        'deliveries' => DeliveryController::class,
-        'seasons' => SeasonController::class,
-      ]
+      []
     );
   });
-
   Route::group(['middleware' => ['secretary']], function () {
     Route::resources(
       [
@@ -60,10 +51,17 @@ Route::group(['middleware' => ['auth']], function () {
       ]
     );
   });
-
-  Route::group(['middleware' => ['guest']], function () {
+  Route::group(['middleware' => ['admin']], function () {
     Route::resources(
-      []
+      [
+        'products' => ProductController::class,
+        'categories' => CategoryController::class,
+        'couriers' => CourierController::class,
+        'users' => UserManagementController::class,
+        'producers' => ProducerController::class,
+        'deliveries' => DeliveryController::class,
+        'seasons' => SeasonController::class,
+      ]
     );
   });
 });
