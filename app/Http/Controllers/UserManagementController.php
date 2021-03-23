@@ -61,6 +61,11 @@ class UserManagementController extends Controller
         return view('users.show',['user'=>$user]);
     }
 
+    public static function getAllUser()
+    {
+        return User::count();
+    }
+
     /**
      * @param Product $product
      * @return View
