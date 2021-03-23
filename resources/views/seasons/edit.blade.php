@@ -3,60 +3,26 @@
 @section('content')
 
     @include('partials.errors')
-    <h1>{{__('Produkt bearbeiten:')}} {{$product->name}}</h1>
-    <form action="{{route('products.update',['product'=>$product])}}" method="POST">
+    <h1>{{__('Season bearbeiten:')}} {{$season->name}}</h1>
+    <form action="{{route('seasons.update',['season'=>$season])}}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
             <div class="col-sm-4">
                 <label for="name">{{__('Bezeichnung')}}:</label>
-                <input class="form-control" type="text" name="name" value="{{$product->name}}">
+                <input class="form-control" type="text" name="name" value="{{$season->season}}">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="price">{{__('Preis')}}:</label>
-                <input class="form-control" type="text" name="price" value="{{$product->price}}">
+                <label for="price">{{__('Datum von')}}:</label>
+                <input class="form-control" type="date" name="date_from" id="date_from" value="{{$season->date_from}}">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="price">{{__('Kalorien')}}:</label>
-                <input class="form-control" type="text" name="kalorien" id="kalorien" value="{{$product->calories}}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="price">{{__('Zucker')}}:</label>
-                <input class="form-control" type="text" name="zucker" id="zucker" value="{{$product->sugar}}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="categories">{{__('Kurier')}}:</label>
-                <select class="form-control" name="kurier" id="kurier">
-
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="category">{{__('product.category')}}:</label>
-                <select class="form-control" name="category" id="category">
-                    @foreach($categories as $category)
-                        @if($product->category_id != $category->id)
-                            <option value="{{$category->id}}">{{$category->category}}</option>
-                        @else
-                            <option value="{{$category->id}}" selected="selected">{{$category->category}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Beschreibung')}}:</label>
-                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="3"></textarea>
+                <label for="price">{{__('Datum bis')}}:</label>
+                <input class="form-control" type="date" name="date_to" id="date_to" value="{{$season->date_to}}">
             </div>
         </div>
         <div class="form-group">

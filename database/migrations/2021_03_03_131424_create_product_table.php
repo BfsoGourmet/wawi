@@ -14,17 +14,17 @@ class CreateProductTable extends Migration {
     Schema::create('products', function (Blueprint $table) {
       $table->id('id');
       $table->string('sku');
-      $table->boolean('is_live');
+      $table->boolean('is_live')->default(0);
       $table->string('name');
       $table->text('short_desc');
       $table->text('long_desc');
       $table->integer('courir_id');
       $table->integer('stock_count');
       $table->float('price');
-      $table->float('special_price');
-      $table->boolean('special_price_active');
-      $table->float('season_price');
-      $table->integer('season_id');
+      $table->float('special_price')->nullable();
+      $table->boolean('special_price_active')->default(0);
+      $table->float('season_price')->nullable();
+      $table->integer('season_id')->nullable();
       $table->string('calories');
       $table->string('sugar');
       $table->string('declaration');

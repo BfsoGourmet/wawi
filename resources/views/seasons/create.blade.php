@@ -4,8 +4,8 @@
 
     @include('partials.errors')
 
-    <h1>Produkt erstellen</h1>
-    <form action="{{route('products.store')}}" method="POST">
+    <h1>Season erstellen</h1>
+    <form action="{{route('seasons.store')}}" method="POST">
         @csrf
         <div class="form-group">
             <div class="col-sm-4">
@@ -15,44 +15,14 @@
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="price">{{__('Preis')}}:</label>
-                <input class="form-control" type="text" name="price" id="price" value="{{ old('price') }}">
+                <label for="price">{{__('Datum von')}}:</label>
+                <input class="form-control" type="date" name="date_from" id="date_from" value="{{ old('date_from') }}">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="price">{{__('Kalorien')}}:</label>
-                <input class="form-control" type="text" name="kalorien" id="kalorien" value="{{ old('kalorien') }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="price">{{__('Zucker')}}:</label>
-                <input class="form-control" type="text" name="zucker" id="zucker" value="{{ old('zucker') }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="kurier">{{__('Kurier')}}:</label>
-                <select class="form-control" name="kurier" id="kurier">
-
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="category">{{__('Produktkategorie')}}:</label>
-                <select class="form-control" name="category" id="category">
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->category}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1">{{__('Beschreibung')}}:</label>
-                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="3"></textarea>
+                <label for="price">{{__('Datum bis')}}:</label>
+                <input class="form-control" type="date" name="date_to" id="date_to" value="{{ old('date_to') }}">
             </div>
         </div>
         <div class="form-group">

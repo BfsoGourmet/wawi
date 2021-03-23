@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\SeasonRequest;
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Season;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Redirector;
@@ -36,75 +36,54 @@ class SeasonController extends Controller
     public function store(SeasonRequest $request)
     {
 
-        $season = new Product();
-        $season->name = $request->name;
-        $season->date_from = "sku";
-        $season->is_live = 0;
-        $season->short_desc = "";
-        $season->long_desc = "";
-        $season->courir_id = 1;
-        $season->stock_count = 0;
-        $season->price = $request->price;
-        $season->calories = $request->kalorien;
-        $season->sugar = $request->zucker;
-        $season->declaration = "";
-        $season->producer_id = 1;
-        $season->category_id = $request->category;
+        $season = new Season();
+        $season->season = $request->name;
+        $season->date_from = $request->date_from;
+        $season->date_to = $request->date_to;
         $season->save();
         return redirect(route('seasons.index'))->withSuccess(__('form.successfully-stored'));
     }
 
     /**
-     * @param Product $product
+     * @param Season $season
      * @return View
      */
-    public function show(Product $product)
+    public function show(Season $season)
     {
-        return view('products.show',['product'=>$product]);
+        return view('seasons.show',['season'=>$season]);
     }
 
     /**
-     * @param Product $product
+     * @param Season $season
      * @return View
      */
-    public function edit(Product $product)
+    public function edit(Season $season)
     {
-        $categories = Category::get();
-        return view('products.edit',['product'=>$product,'categories'=>$categories]);
+        return view('seasons.edit',['season'=>$season]);
     }
 
     /**
-     * @param ProductRequest $request
-     * @param Product $product
+     * @param SeasonRequest $request
+     * @param Season $season
      * @return Redirector
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(SeasonRequest $request, Season $season)
     {
-        $product->name = $request->name;
-        $product->sku = "sku";
-        $product->is_live = 0;
-        $product->short_desc = "";
-        $product->long_desc = "";
-        $product->courir_id = 1;
-        $product->stock_count = 0;
-        $product->price = $request->price;
-        $product->calories = $request->kalorien;
-        $product->sugar = $request->zucker;
-        $product->declaration = "";
-        $product->producer_id = 1;
-        $product->category_id = $request->category;
-        $product->save();
-        return redirect(route('products.index'))->withSuccess(__('form.successfully-updated'));
+        $season->season = $request->name;
+        $season->date_from = $request->date_from;
+        $season->date_to = $request->date_to;
+        $season->save();
+        return redirect(route('seasons.index'))->withSuccess(__('form.successfully-updated'));
     }
 
     /**
-     * @param Product $product
+     * @param Season $season
      * @return Redirector
      * @throws Exception
      */
-    public function destroy(Product $product)
+    public function destroy(Season $season)
     {
-        $product->delete();
+        $season->delete();
         return redirect(route('products.index'))->withSuccess(__('form.successfully-deleted'));
     }
 }

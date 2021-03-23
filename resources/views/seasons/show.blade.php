@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>{{$product->name}}</h1>
+    <h1>{{$season->name}}</h1>
     <table class="table table-sm">
         <thead>
         <tr>
@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{__('product.price')}}</td>
+            <td>{{__('season.price')}}</td>
             <td>CHF {{$product->price}}</td>
         </tr>
         </tbody>
