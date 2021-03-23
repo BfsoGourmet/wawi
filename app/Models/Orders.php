@@ -9,7 +9,4 @@ class Orders extends Model
 {
     use HasFactory;
 
-    function get_last_order_id() {
-        return DB::table('orders')->order_by('created_at', 'desc')->first();
-    }
 }

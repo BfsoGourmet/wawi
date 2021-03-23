@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PersonController;
-
+use App\Http\Controllers\ShopAPIController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,8 @@ use App\Http\Controllers\PersonController;
 */
 
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+Route::get('/api', [App\Http\Controllers\ShopAPIController::class, 'syncOrders']);
+Route::get('/apii', [App\Http\Controllers\ShopAPIController::class, 'send_product_changes']);
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/', function () {
