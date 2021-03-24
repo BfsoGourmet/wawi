@@ -19,6 +19,11 @@ class ProducerController extends Controller
         return view('producers.index', ['producers' => $producers]);
     }
 
+    public static function getAllProducers()
+    {
+        return Producer::count();
+    }
+
     /**
      * @return View
      */

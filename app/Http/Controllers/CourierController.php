@@ -40,6 +40,10 @@ class CourierController extends Controller
         $courier->save();
         return redirect(route('couriers.index'))->withSuccess(__('form.successfully-stored'));
     }
+    public static function getAllCouriers()
+    {
+        return Courier::count();
+    }
 
     /**
      * @param Courier $courier
