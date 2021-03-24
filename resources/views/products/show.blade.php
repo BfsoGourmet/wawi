@@ -88,7 +88,7 @@
             <td>
                 @foreach($seasons as $season)
                     @if($product->season_id == $season->id)
-                        {{$season->season}}: {{$season->date_from}} - {{$season->date_to}}
+                        {{$season->season}}: {{date('d.m.Y', strtotime($season->date_from))}} - {{date('d.m.Y', strtotime($season->date_to))}}
                     @endif
                 @endforeach
             </td>

@@ -29,10 +29,10 @@
                     {{$season->season}}
                 </td>
                 <td>
-                    {{$season->date_from}}
+                    {{date('d.m.Y', strtotime($season->date_from))}}
                 </td>
                 <td>
-                    {{$season->date_to}}
+                    {{date('d.m.Y', strtotime($season->date_to))}}
                 </td>
                 <td>
 
