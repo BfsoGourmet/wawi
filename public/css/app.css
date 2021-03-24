@@ -1,10 +1,9 @@
 .navbar {
     height: 68px;
-    background-image: linear-gradient(
-        to bottom right,
-        var(--blue),
-        var(--cyan)
-    );
+    background-color: #C0093F !important;
+}
+.nav-link{
+    color: white !important;
 }
 
 .navbar-brand {
@@ -13,4 +12,12 @@
 
 .nav-item {
     padding: 0;
+    font-size: 105%;
+}
+#sidebarMenu{
+    background-color: #1A1A1C !important;
+    font-weight: 600;
+}
+.nav-link:hover, .nav-link active{
+    background-color: #353535 !important;
 }

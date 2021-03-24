@@ -14,6 +14,8 @@ use App\Http\Middleware\Helper;
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Styles -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
@@ -61,6 +63,7 @@ use App\Http\Middleware\Helper;
             @if (Helper::isGuest() || Helper::isSecretary() || Helper::isAdmin())
             <li class="nav-item">
               <a class="nav-link active" href="{{ url('/home') }}">
+                  <i class="fa fa-home"></i>
                 <span data-feather="home"></span>
                 Dashboard <span class="sr-only">(current)</span>
               </a>
@@ -69,36 +72,42 @@ use App\Http\Middleware\Helper;
             @if (Helper::isSecretary() || Helper::isAdmin())
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/couriers')}}">
+                  <i class="fa fa-truck"></i>
                 <span data-feather="couriers"></span>
                 Kuriere <span class="sr-only">(couriers)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/producers')}}">
+                  <i class="fa fa-industry"></i>
                 <span data-feather="producers"></span>
                 Produzenten <span class="sr-only">(producers)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/categories')}}">
+                  <i class="fa fa-list"></i>
                 <span data-feather="categories"></span>
                 Kategorien <span class="sr-only">(categories)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/seasons')}}">
+                  <i class="fa fa-calendar"></i>
                 <span data-feather="seasons"></span>
                 Saison <span class="sr-only">(seasons)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/products')}}">
+                  <i class="fa fa-archive"></i>
                 <span data-feather="products"></span>
                 Produkte <span class="sr-only">(products)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/deliveries')}}">
+                  <i class="fa fa-shopping-cart"></i>
                 <span data-feather="deliveries"></span>
                 Bestellungen <span class="sr-only">(deliveries)</span>
               </a>
@@ -107,6 +116,7 @@ use App\Http\Middleware\Helper;
             @if (Helper::isAdmin())
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/users')}}">
+                  <i class="fa fa-users"></i>
                 <span data-feather="users"></span>
                 User Management <span class="sr-only">(user_management)</span>
               </a>

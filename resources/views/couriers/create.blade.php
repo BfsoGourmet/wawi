@@ -9,7 +9,7 @@
         @csrf
         <div class="form-group">
             <div class="col-sm-4">
-                <label for="firstname">{{__('Vorname')}}:</label>
+             we   <label for="firstname">{{__('Vorname')}}:</label>
                 <input class="form-control" type="text" name="firstname" id="firstname" value="{{ old('firstname') }}">
             </div>
         </div>
