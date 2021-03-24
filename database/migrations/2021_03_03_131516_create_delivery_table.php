@@ -21,8 +21,8 @@ class CreateDeliveryTable extends Migration
             $table->text('delivery_zip');
             $table->text('delivery_place');
             $table->text('delivery_country');
-            $table->unsignedBigInteger('courier_id')->default('null');
-            $table->foreign('courier_id')->references('id')->on('couriers');
+            $table->unsignedBigInteger('courier_id')->default(0);
+            //$table->foreign('courier_id')->references('id')->on('couriers');
             $table->timestamps();
         });
     }

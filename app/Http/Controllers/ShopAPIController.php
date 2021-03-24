@@ -62,29 +62,29 @@ class ShopAPIController extends Controller
         
         $status = false;
         if (!empty($changes)) {
-          $status = true;
-            foreach ($changes as $change) {
-              if ($change->is_deleted) {
-                $response = Http::post('http://example.com//webshop/public/api/v1/product?article_id='.$change->id.'&deleted=1', []);
-              }
-              else {
-                $response = Http::post('http://example.com//webshop/public/api/v1/product?article_id='.$change->id.'&deleted=0&active='.$change->is_live, [
-                  'uid'               => $change->id,
-                  'product'           => $change->name,
-                  'description'       => $change->long_desc,
-                  'price'             => $change->price,
-                  //'vegan'           => $change->vegan,
-                  //'vegetarian'      => $change->vegetarian,
-                  //'picture'         => $change->picture,
-                  'slug'              => $change->sku,
-                  'declaration'       => $change->declaration,
-                  'manufacturer_id'   => $change->name,
-                ]);
-              }
-              if (!$response->successful()) {
-                $status = false;
-              }
-            }
+          $data = array();
+          foreach ($changes as $change) {
+            $data[] = array(
+              'uid'               => $change->id,
+              'deleted'           => $change->is_deleted,
+              'active'            => $change->is_live,
+              'product'           => $change->name,
+              'description'       => $change->long_desc,
+              'price'             => $change->price,
+              //'vegan'           => $change->vegan,
+              //'vegetarian'      => $change->vegetarian,
+              //'picture'         => $change->picture,
+              'slug'              => $change->sku,
+              'declaration'       => $change->declaration,
+              'manufacturer_id'   => $change->name,
+            );
+        
+          }
+          $response = Http::post('http://example.com//webshop/public/api/v1/product', $data);
+          if (!$response->successful()) {
+            $status = false;
+          }
+        
         }
         DB::insert('insert into api_logs (`status_id`, `message`, `api_id`, `table`, `created_at`, `updated_at`) values (?, ?, 1, "products", NOW(), NOW())', [intval($status), ""]);
     }
