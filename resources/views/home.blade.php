@@ -142,7 +142,7 @@
 
         <!-- Content Row -->
         <div class="row">
-          <div class="col-lg-6 mb-4 text-center">
+          <div class="col-lg-12 mb-4 text-center">
             <!-- Illustrations -->
             <!-- Approach -->
             <div class="card shadow mb-4">
@@ -151,7 +151,7 @@
               </div>
               <div class="card-body">
                 <p>Mit Hilfe von diesem Tool, kann man die Podukte, Lieferanten, User admininstrieren. Vielen Dank an
-                den Hauptentwickler Benjamin Anthamatten</p>
+                den Hauptentwickler BENJAMIN FRANKLIN</p>
                 <p class="mb-0">Neben der genannten Vorschrift in der Datenschutz-Grundverordnung gibt es weitergehende Pflichten zum Vorhalten einer Datenschutzerklärung .</p>
               </div>
             </div>
