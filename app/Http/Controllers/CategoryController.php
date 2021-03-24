@@ -19,6 +19,11 @@ class CategoryController extends Controller
         return view('categories.index', ['categories' => $categories]);
     }
 
+
+    public static function getAllCategories()
+    {
+        return Category::count();
+    }
     /**
      * @return View
      */

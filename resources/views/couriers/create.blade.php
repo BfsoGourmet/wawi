@@ -4,7 +4,7 @@
 
     @include('partials.errors')
 
-    <h1>Produkt erstellen</h1>
+    <h1>Kurier erstellen</h1>
     <form action="{{route('couriers.store')}}" method="POST">
         @csrf
         <div class="form-group">
