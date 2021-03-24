@@ -1,3 +1,7 @@
+<?php
+
+use App\Http\Middleware\Helper;
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -54,54 +58,60 @@
           <ul class="nav flex-column">
             @if (Route::has('login'))
             @auth
+            @if (Helper::isGuest() || Helper::isSecretary() || Helper::isAdmin())
             <li class="nav-item">
               <a class="nav-link active" href="{{ url('/home') }}">
                 <span data-feather="home"></span>
                 Dashboard <span class="sr-only">(current)</span>
               </a>
             </li>
+            @endif
+            @if (Helper::isSecretary() || Helper::isAdmin())
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/couriers')}}">
-                  <span data-feather="couriers"></span>
-                  Kuriere <span class="sr-only">(couriers)</span>
+                <span data-feather="couriers"></span>
+                Kuriere <span class="sr-only">(couriers)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/producers')}}">
-                  <span data-feather="producers"></span>
-                  Produzenten <span class="sr-only">(producers)</span>
+                <span data-feather="producers"></span>
+                Produzenten <span class="sr-only">(producers)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/categories')}}">
-                  <span data-feather="categories"></span>
-                  Kategorien <span class="sr-only">(categories)</span>
+                <span data-feather="categories"></span>
+                Kategorien <span class="sr-only">(categories)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/seasons')}}">
-                  <span data-feather="seasons"></span>
-                  Saison <span class="sr-only">(seasons)</span>
+                <span data-feather="seasons"></span>
+                Saison <span class="sr-only">(seasons)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/products')}}">
-                  <span data-feather="products"></span>
-                  Produkte <span class="sr-only">(products)</span>
+                <span data-feather="products"></span>
+                Produkte <span class="sr-only">(products)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/deliveries')}}">
-                  <span data-feather="deliveries"></span>
-                  Bestellungen <span class="sr-only">(deliveries)</span>
+                <span data-feather="deliveries"></span>
+                Bestellungen <span class="sr-only">(deliveries)</span>
               </a>
             </li>
+            @endif
+            @if (Helper::isAdmin())
             <li class="nav-item">
               <a class="nav-link active" href="{{url('/users')}}">
                 <span data-feather="users"></span>
                 User Management <span class="sr-only">(user_management)</span>
               </a>
             </li>
+            @endif
             @endauth
             @endif
           </ul>

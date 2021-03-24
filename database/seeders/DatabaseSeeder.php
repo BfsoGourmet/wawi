@@ -5,28 +5,21 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Courier;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        // \App\Models\User::factory(10)->create();
-        Category::factory(5)->create();
-        Product::factory(20)->create();
-
-        $categories = Category::all();
-
-        // Populate the pivot table
-        Product::all()->each(function ($product) use ($categories) {
-            $product->categories()->attach(
-                $categories->random(rand(1, 3))->pluck('id')->toArray()
-            );
-        });
-    }
+class DatabaseSeeder extends Seeder {
+  /**
+   * Seed the application's database.
+   *
+   * @return void
+   */
+  public function run() {
+    $user = new User();
+    $user->name = 'admin';
+    $user->email = 'admin@info.com';
+    $user->role = 'admin';
+    $user->password = '$2y$10$rddhm01P61h0cV3O.tObdudLHZ/ZsC.3mlDVxxpFU2/AvhxvVXInu';
+    $user->save();
+  }
 }

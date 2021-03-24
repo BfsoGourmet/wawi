@@ -8,6 +8,7 @@ use App\Http\Controllers\DeliveryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\WrongPermissionController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\PersonController;
 
@@ -22,25 +23,47 @@ use App\Http\Controllers\PersonController;
 |
 */
 
+
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
 Route::get('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'index'])->name('logout');
+Route::get('/wrong-permission', [App\Http\Controllers\WrongPermissionController::class, 'index'])->name('wrong-permission');
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/', function () {
     return view('home');
   });
-  Route::resources(
-    [
-      'products' => ProductController::class,
-      'categories' => CategoryController::class,
-      'couriers' => CourierController::class,
-      'users' => UserManagementController::class,
-      'producers' => ProducerController::class,
-      'deliveries' => DeliveryController::class,
-      'seasons' => SeasonController::class,
-    ]
-  );
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+  Route::group(['middleware' => ['guest']], function () {
+    Route::resources(
+      []
+    );
+  });
+  Route::group(['middleware' => ['secretary']], function () {
+    Route::resources(
+      [
+        'products' => ProductController::class,
+        'categories' => CategoryController::class,
+        'couriers' => CourierController::class,
+        'producers' => ProducerController::class,
+        'deliveries' => DeliveryController::class,
+        'seasons' => SeasonController::class,
+      ]
+    );
+  });
+  Route::group(['middleware' => ['admin']], function () {
+    Route::resources(
+      [
+        'products' => ProductController::class,
+        'categories' => CategoryController::class,
+        'couriers' => CourierController::class,
+        'users' => UserManagementController::class,
+        'producers' => ProducerController::class,
+        'deliveries' => DeliveryController::class,
+        'seasons' => SeasonController::class,
+      ]
+    );
+  });
 });
 
 Auth::routes();
