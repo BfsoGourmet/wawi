@@ -4,7 +4,7 @@
     @include('partials.messages')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/products.css') }}" >
 
-    <h1>{{__('product.products')}} Test</h1>
+    <h1>{{__('Produkt')}}</h1>
 
     {{ $products->links() }}
 
@@ -12,9 +12,9 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">{{__('product.name')}}</th>
-            <th scope="col">{{__('product.price')}}</th>
-            <th scope="col">{{__('catalog.categories')}}</th>
+            <th scope="col">{{__('Bezeichnung')}}</th>
+            <th scope="col">{{__('Preis')}}</th>
+            <th scope="col">{{__('Kategorie')}}</th>
             <th scope="col">{{__('Ist Aktiv')}}</th>
             <th scope="col">&nbsp;</th>
         </tr>
