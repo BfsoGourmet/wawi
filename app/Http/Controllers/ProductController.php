@@ -37,6 +37,10 @@ class ProductController extends Controller
         return view('products.create',['categories'=>$categories, 'seasons'=>$seasons, 'couriers'=>$couriers,'producers'=>$producers]);
     }
 
+    public static function getAllProducts()
+    {
+        return Product::count();
+    }
     /**
      * @param ProductRequest $request
      * @return Redirector

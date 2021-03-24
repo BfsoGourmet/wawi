@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -28,9 +29,11 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        $user_id = $this->session()->get('editableUser');
+
         return [
             'name' => 'required',
-            'email' => 'required|unique:users' ,
+            'email' => 'required',
             'role' => 'required',
         ];
     }
