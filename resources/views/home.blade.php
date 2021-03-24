@@ -35,7 +35,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          <a href="pdf/Report.docx" download target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
 
         <!-- Content Row -->
@@ -182,8 +182,7 @@
               <div class="card-body">
                 <p>Mit Hilfe von diesem Tool, kann man die Podukte, Lieferanten, User admininstrieren. Vielen Dank an
                 den Hauptentwickler Benjamin Anthamatten</p>
-                <p class="mb-0">Before working with this theme, you should become familiar with the
-                  Bootstrap framework, especially the utility classes.</p>
+                <p class="mb-0">Neben der genannten Vorschrift in der Datenschutz-Grundverordnung gibt es weitergehende Pflichten zum Vorhalten einer Datenschutzerklärung .</p>
               </div>
             </div>
 
