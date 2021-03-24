@@ -4,7 +4,7 @@
     @include('partials.messages')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/season.css') }}" >
 
-    <h1>{{__('season.seasons')}} Test</h1>
+    <h1>{{__('Saison')}}</h1>
 
     {{ $seasons->links() }}
 
@@ -12,9 +12,9 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">{{__('season.season')}}</th>
-            <th scope="col">{{__('season.date_from')}}</th>
-            <th scope="col">{{__('season.date_to')}}</th>
+            <th scope="col">{{__('Bezeichnung')}}</th>
+            <th scope="col">{{__('Von Datum')}}</th>
+            <th scope="col">{{__('Bis Datum')}}</th>
             <th scope="col">&nbsp;</th>
         </tr>
         </thead>
@@ -26,9 +26,7 @@
                     {{$season->id}}
                 </th>
                 <td>
-                    <a href="{{route('seasons.show',['season'=>$season])}}">
-                        {{$season->season}}
-                    </a>
+                    {{$season->season}}
                 </td>
                 <td>
                     {{$season->date_from}}
