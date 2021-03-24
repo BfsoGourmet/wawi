@@ -26,6 +26,7 @@
                 @foreach($seasons as $season)
                     @if($product->season_id == $season->id)
                         @php
+
                             $season_date_from = $season->date_from;
                             $season_date_to = $season->date_to;
                         @endphp
@@ -44,8 +45,12 @@
                 <td>
                     @if($product->special_price_active)
                         CHF {{$product->special_price}} *Spezial
-                    @elseif($season_date_from <= date("Y-m-d") AND $season_date_to >= date("Y-m-d"))
-                        CHF {{$product->season_price}} *Saison
+                    @elseif($product->season_id>0)
+                        @if($season_date_from <= date("Y-m-d") AND $season_date_to >= date("Y-m-d"))
+                            CHF {{$product->season_price}} *Saison
+                        @else
+                            CHF {{$product->price}}
+                        @endif
                     @else
                         CHF {{$product->price}}
                     @endif
