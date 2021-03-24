@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder {
     $user->name = 'admin';
     $user->email = 'admin@info.com';
     $user->role = 'admin';
-    $user->password = '$2y$10$rddhm01P61h0cV3O.tObdudLHZ/ZsC.3mlDVxxpFU2/AvhxvVXInu';
+    $user->password = '$2y$10$xUyrgdVT53kkByNzF/kk/OragthypYqVv1n8I3SzH.9fdNMkNYdba';
     $user->save();
   }
 }
